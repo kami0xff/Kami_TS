@@ -6,18 +6,11 @@ export class Shader {
     /**
      *
      * @param name
-     * @param vertexSource vertex source as in the actual source code of the vertex shader
-     * @param fragmentSource same as above
      */
-    constructor(name, vertexSource, fragmentSource) {
+    constructor(name) {
         this.attributes = {};
         this.uniforms = {};
         this.name = name;
-        let vertexShader = this.loadShader(vertexSource, gl.VERTEX_SHADER);
-        let fragmentShader = this.loadShader(fragmentSource, gl.FRAGMENT_SHADER);
-        this.createProgram(vertexShader, fragmentShader);
-        this.detectAttributes();
-        this.detectUniforms();
     }
     getName() {
         return this.name;
@@ -41,6 +34,13 @@ export class Shader {
     use() {
         // @ts-ignore
         gl.useProgram(this.program);
+    }
+    load(vertexSource, fragmentSource) {
+        let vertexShader = this.loadShader(vertexSource, gl.VERTEX_SHADER);
+        let fragmentShader = this.loadShader(fragmentSource, gl.FRAGMENT_SHADER);
+        this.createProgram(vertexShader, fragmentShader);
+        this.detectAttributes();
+        this.detectUniforms();
     }
     loadShader(source, shaderType) {
         let shader = gl.createShader(shaderType);

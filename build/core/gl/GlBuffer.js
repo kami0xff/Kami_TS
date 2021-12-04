@@ -70,7 +70,7 @@ export class GlBuffer {
         for (let it of this.attributes) {
             gl.disableVertexAttribArray(it.location);
         }
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
+        gl.bindBuffer(this.targetBufferType, null);
     }
     /**
      * adds an attribute with teh provided information to this buffer

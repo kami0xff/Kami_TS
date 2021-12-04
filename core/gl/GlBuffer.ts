@@ -4,6 +4,7 @@ import {gl} from './gl.js'
  * represents the information needed for a GLBuffer attribute.
  */
 export class AttributeInfo {
+    //location in the buffer of the attribute i think
     public location: number | undefined;
     //the number of elements in this attribute vec3 = 3
     public size: number | undefined;
@@ -96,7 +97,7 @@ export class GlBuffer {
         for (let it of this.attributes) {
             gl.disableVertexAttribArray(it.location!);
         }
-        gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
+        gl.bindBuffer(this.targetBufferType, null);
     }
 
 

@@ -22,10 +22,32 @@ export class Vector3 {
     setz(value) {
         this.z = value;
     }
+    static zero() {
+        return new Vector3();
+    }
+    static one() {
+        return new Vector3(1, 1, 1);
+    }
     toArray() {
         return [this.x, this.y, this.z];
     }
     toFloat32Array() {
         return new Float32Array(this.toArray());
+    }
+    copyFrom(vector) {
+        this.x = vector.x;
+        this.y = vector.y;
+        this.z = vector.z;
+    }
+    setFromJson(json) {
+        if (json.x !== undefined) {
+            this.x = Number(json.x);
+        }
+        if (json.y !== undefined) {
+            this.y = Number(json.y);
+        }
+        if (json.z !== undefined) {
+            this.z = Number(json.z);
+        }
     }
 }

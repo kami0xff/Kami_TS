@@ -3,8 +3,7 @@
  */
 export declare class Engine {
     private canvas;
-    private shader;
-    private sprite;
+    private basicShader;
     private projection;
     /**
      * Creates a new engine
@@ -23,5 +22,4 @@ export declare class Engine {
      * Resizes the canvas to fit the window
      */
     resize(): void;
-    private loadShaders;
 }

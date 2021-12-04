@@ -1,7 +1,7 @@
 /**
  * Represents a webGl shader
  */
-export declare class Shader {
+export declare abstract class Shader {
     private name;
     private program;
     private attributes;
@@ -9,10 +9,8 @@ export declare class Shader {
     /**
      *
      * @param name
-     * @param vertexSource vertex source as in the actual source code of the vertex shader
-     * @param fragmentSource same as above
      */
-    constructor(name: string, vertexSource: string, fragmentSource: string);
+    constructor(name: string);
     getName(): string;
     /**
      * gets the location of an attribute with the provided name
@@ -21,6 +19,7 @@ export declare class Shader {
     getAttributeLocation(name: string): number;
     getUniformLocation(name: string): WebGLUniformLocation;
     use(): void;
+    load(vertexSource: string, fragmentSource: string): void;
     private loadShader;
     private createProgram;
     private detectAttributes;
